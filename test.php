@@ -77,7 +77,7 @@ if (!is_null($events['events'])) {
 				echo $result . "\r\n";
 			}
 			//// check water level ////
-			else if($data_level > $level_set){
+			if($data_level > $level_set){
 				echo "check 4";
 				$text = "Water level is too low";
 				// Build message to reply back
@@ -107,7 +107,7 @@ if (!is_null($events['events'])) {
 				echo $result . "\r\n";
 			}
 			//// check power ////
-			else if($data_power == "off"){
+			if($data_power == "off"){
 				echo $data_power;
 				$text = "Power OFF!";
 				// Build message to reply back
