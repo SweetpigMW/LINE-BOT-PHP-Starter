@@ -108,7 +108,7 @@ if (!is_null($events['events'])) {
 			}
 			//// check power ////
 			if($data_power = "off"){
-				echo "check 5";
+				echo $data_power;
 				$text = "Power OFF!";
 				// Build message to reply back
 				$messages = [
