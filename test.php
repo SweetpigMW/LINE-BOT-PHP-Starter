@@ -41,6 +41,8 @@ if (!is_null($events['events'])) {
 			$text_get = explode(",", $text);
 			$temp_set = $text_get[0];
 			$level_set = $text_get[1];
+			echo $temp_set;
+			echo $level_set;
 		}
 	}
 }
