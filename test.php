@@ -20,7 +20,7 @@ $data_power = $data_get[2];
 $replyToken;
 $temp_set;
 $level_set;
-echo "check 1";
+echo $level_set;
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
