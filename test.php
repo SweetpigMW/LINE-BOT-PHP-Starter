@@ -41,6 +41,9 @@ if (!is_null($events['events'])) {
 			$text_get = explode(",", $text);
 			$temp_set = $text_get[0];
 			$level_set = $text_get[1];
+		}
+	}
+}
 			//// check temperature ////
 			if($data_temp <= $temp_set){
 				echo "check 3";
@@ -132,6 +135,7 @@ if (!is_null($events['events'])) {
 				echo $result . "\r\n";
 			}
 
+
 // // 			// Build message to reply back
 // // 			$messages = [
 // // 				'type' => 'text',
@@ -157,9 +161,9 @@ if (!is_null($events['events'])) {
 // // 			curl_close($ch);
 
 // // 			echo $result . "\r\n";
- 		}
- 	}
- }
+ // 		}
+ // 	}
+ // }
 echo "OK";
 
 ?>
