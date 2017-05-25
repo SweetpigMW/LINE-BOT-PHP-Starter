@@ -25,7 +25,7 @@ echo "check 1";
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
-data_check();
+//data_check();
 echo "check 2";
 function data_check(){
 // Validate parsed JSON data
