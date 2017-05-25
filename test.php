@@ -12,7 +12,7 @@ $access_token = '8lqeJ0Y8ueX9E8IyvAfiRmS7ivqa2sanRuAlakOMG1jXNQVJ6Zem9RsOPe04FoK
 // else{
 // 	echo "Data not received";
 // }
-$data = "29.5,2,on";
+$data = "29.5,1,on";
 $data_get = explode(",", $data);
 $data_temp = $data_get[0];
 $data_level = $data_get[1];
