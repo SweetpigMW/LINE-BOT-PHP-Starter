@@ -18,8 +18,8 @@ $data_temp = $data_get[0];
 $data_level = $data_get[1];
 $data_power = $data_get[2];
 $replyToken;
-$temp_set = 25;
-$level_set= 1.5;
+$temp_set;
+$level_set;
 echo "check 1";
 // Get POST body content
 $content = file_get_contents('php://input');
