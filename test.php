@@ -42,7 +42,7 @@ if (!is_null($events['events'])) {
 			$temp_set = $text_get[0];
 			$level_set = $text_get[1];
 			//// check temperature ////
-			if(data_temp <= temp_set){
+			if($data_temp <= $temp_set){
 				echo "check 3";
 				$text = "Water temperature is too low";
 				// Build message to reply back
@@ -72,7 +72,7 @@ if (!is_null($events['events'])) {
 				echo $result . "\r\n";
 			}
 			//// check water level ////
-			if(data_level > level_set){
+			if($data_level > $level_set){
 				echo "check 4";
 				$text = "Water level is too low";
 				// Build message to reply back
@@ -102,7 +102,7 @@ if (!is_null($events['events'])) {
 				echo $result . "\r\n";
 			}
 			//// check power ////
-			if(data_power = "off"){
+			if($data_power = "off"){
 				echo "check 5";
 				$text = "Power OFF!";
 				// Build message to reply back
@@ -160,6 +160,6 @@ if (!is_null($events['events'])) {
  		}
  	}
  }
-echo "OK";
+//echo "OK";
 
 ?>
