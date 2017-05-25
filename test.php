@@ -19,7 +19,7 @@ $data_level = $data_get[1];
 $data_power = $data_get[2];
 $replyToken;
 $temp_set;
-$level_set;
+$level_set ;
 echo $level_set;
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -53,7 +53,7 @@ if (!is_null($events['events'])) {
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => $text
+					'text' => $temp_set
 				];
 
 				// Make a POST Request to Messaging API to reply to sender
@@ -83,7 +83,7 @@ if (!is_null($events['events'])) {
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
-					'text' => $text
+					'text' => $level_set
 				];
 
 				// Make a POST Request to Messaging API to reply to sender
