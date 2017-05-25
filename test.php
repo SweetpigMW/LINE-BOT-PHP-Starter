@@ -20,14 +20,13 @@ $data_power = $data_get[2];
 $replyToken;
 $temp_set;
 $level_set;
-
+echo "check 1";
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 data_check();
-
-
+echo "check 2";
 function data_check(){
 // Validate parsed JSON data
 	if (!is_null($events['events'])) {
@@ -48,6 +47,7 @@ function data_check(){
 }
 //// check temperature ////
 if(data_temp <= temp_set){
+	echo "check 3";
 	$text = "Water temperature is too low";
 	// Build message to reply back
 	$messages = [
@@ -77,6 +77,7 @@ if(data_temp <= temp_set){
 }
 //// check water level ////
 if(data_level > level_set){
+	echo "check 4";
 	$text = "Water level is too low";
 	// Build message to reply back
 	$messages = [
@@ -106,6 +107,7 @@ if(data_level > level_set){
 }
 //// check power ////
 if(data_power = "off"){
+	echo "check 5";
 	$text = "Power OFF!";
 	// Build message to reply back
 	$messages = [
