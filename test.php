@@ -27,7 +27,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 //data_check();
 echo "check 2";
-function data_check(){
+//function data_check(){
 // Validate parsed JSON data
 	if (!is_null($events['events'])) {
 		// Loop through each event
@@ -41,10 +41,6 @@ function data_check(){
 				$text_get = explode(",", $text);
 				$temp_set = $text_get[0];
 				$level_set = $text_get[1];
-			}
-		}
-	}
-}
 //// check temperature ////
 if(data_temp <= temp_set){
 	echo "check 3";
@@ -161,9 +157,9 @@ if(data_power = "off"){
 // 			curl_close($ch);
 
 // 			echo $result . "\r\n";
-// 		}
-// 	}
-// }
+ 		}
+ 	}
+ }
 echo "OK";
 
 ?>
