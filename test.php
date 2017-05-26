@@ -1,5 +1,5 @@
 <?php
-$strAccessToken = '8lqeJ0Y8ueX9E8IyvAfiRmS7ivqa2sanRuAlakOMG1jXNQVJ6Zem9RsOPe04FoK+T3D45lIAH9v9tJ1fpXh6BqNQL0KLfqJzdASLjDteryhnRhccMGSbOqMIEPaBdAND53w3CfjVr2DLRF9k1sqdDQdB04t89/1O/w1cDnyilFU=';
+$access_token = '8lqeJ0Y8ueX9E8IyvAfiRmS7ivqa2sanRuAlakOMG1jXNQVJ6Zem9RsOPe04FoK+T3D45lIAH9v9tJ1fpXh6BqNQL0KLfqJzdASLjDteryhnRhccMGSbOqMIEPaBdAND53w3CfjVr2DLRF9k1sqdDQdB04t89/1O/w1cDnyilFU=';
 
 $data = "29.5,5,on";
 $data_get = explode(",", $data);
@@ -71,17 +71,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($ch);
 curl_close ($ch);
-
-
-
-
-
-
-
-
-
-
-
 
 //function data_check(){
 // Validate parsed JSON data
