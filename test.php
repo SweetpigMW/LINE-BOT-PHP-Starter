@@ -55,44 +55,44 @@ if (!is_null($events['events'])) {
 if($data_temp <= $temp_set){
 	echo "check 3";
 	$text = "Water temperature is too low";
-	if($level_set > $data_level){
-		$text2 = "Water level is too low";
-		// if($data_power == "off"){
-		// 	$text3 = "Power OFF!";
-		// 	$messages = [
-		// 		{
-		// 			'type' => 'text',
-		// 			'text' => $text
-		// 		},
-		// 		{
-		// 			'type' => 'text',
-		// 			'text' => $text2
-		// 		},
-		// 		{
-		// 			'type' => 'text',
-		// 			'text' => $text3
-		// 		}
-		// 	];
-		// }
-		// else{
-		// 	$messages = [
-		// 		{
-		// 			'type' => 'text',
-		// 			'text' => $text
-		// 		},
-		// 		{
-		// 			'type' => 'text',
-		// 			'text' => $text2
-		// 		}
-		// 	];
-		// }
-	}
-	else{
-		$messages = [
-			'type' => 'text',
-			'text' => $text
-		];
-	}
+	// if($level_set > $data_level){
+	// 	$text2 = "Water level is too low";
+	// 	// if($data_power == "off"){
+	// 	// 	$text3 = "Power OFF!";
+	// 	// 	$messages = [
+	// 	// 		{
+	// 	// 			'type' => 'text',
+	// 	// 			'text' => $text
+	// 	// 		},
+	// 	// 		{
+	// 	// 			'type' => 'text',
+	// 	// 			'text' => $text2
+	// 	// 		},
+	// 	// 		{
+	// 	// 			'type' => 'text',
+	// 	// 			'text' => $text3
+	// 	// 		}
+	// 	// 	];
+	// 	// }
+	// 	// else{
+	// 	// 	$messages = [
+	// 	// 		{
+	// 	// 			'type' => 'text',
+	// 	// 			'text' => $text
+	// 	// 		},
+	// 	// 		{
+	// 	// 			'type' => 'text',
+	// 	// 			'text' => $text2
+	// 	// 		}
+	// 	// 	];
+	// 	// }
+	// }
+	// else{
+	// 	$messages = [
+	// 		'type' => 'text',
+	// 		'text' => $text
+	// 	];
+	// }
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/reply';
 	$data = [
@@ -117,26 +117,26 @@ if($data_temp <= $temp_set){
 if($level_set > $data_level){
 	echo "check 4";
 	$text = "Water level is too low";
-	if($data_power == "off"){
-		$text2 = "Power OFF!";
-		$messages = [
-			{
-				'type' => 'text',
-				'text' => $text
-			},
-			{
-				'type' => 'text',
-				'text' => $text2
-			}
-		];
-	}
-	else{
-		// Build message to reply back
-		$messages = [
-			'type' => 'text',
-			'text' =>  $text
-		];
-	}
+	// if($data_power == "off"){
+	// 	$text2 = "Power OFF!";
+	// 	$messages = [
+	// 		{
+	// 			'type' => 'text',
+	// 			'text' => $text
+	// 		},
+	// 		{
+	// 			'type' => 'text',
+	// 			'text' => $text2
+	// 		}
+	// 	];
+	// }
+	// else{
+	// 	// Build message to reply back
+	// 	$messages = [
+	// 		'type' => 'text',
+	// 		'text' =>  $text
+	// 	];
+	// }
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/reply';
 	$data = [
