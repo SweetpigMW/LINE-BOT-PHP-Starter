@@ -141,6 +141,9 @@ if($data_power == "off"){
 
 	echo $result . "\r\n";
 }
+else{
+	echo "OK all";
+}
 
 
 // // 			// Build message to reply back
@@ -171,6 +174,6 @@ if($data_power == "off"){
  // 		}
  // 	}
  // }
-echo "OK";
+//echo "OK";
 
 ?>
