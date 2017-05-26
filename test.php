@@ -18,7 +18,7 @@ $data_get = explode(",", $data);
 $data_temp = $data_get[0];
 $data_level = $data_get[1];
 $data_power = $data_get[2];
-echo $data_temp
+echo $data_temp;
 $replyToken;
 $temp_set;
 $level_set;
