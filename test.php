@@ -12,6 +12,7 @@ $access_token = '8lqeJ0Y8ueX9E8IyvAfiRmS7ivqa2sanRuAlakOMG1jXNQVJ6Zem9RsOPe04FoK
 // else{
 // 	echo "Data not received";
 // }
+
 $data = "29.5,5,on";
 $data_get = explode(",", $data);
 $data_temp = $data_get[0];
@@ -20,7 +21,6 @@ $data_power = $data_get[2];
 $replyToken;
 $temp_set;
 $level_set ;
-echo $level_set;
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -46,70 +46,20 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
+if($data != null){
 			//// check temperature ////
 			if($data_temp <= $temp_set){
 				echo "check 3";
-				$text = "Water temperature is too low";
-				// Build message to reply back
-				$messages = [
-					'type' => 'text',
-					'text' => $temp_set , $level_set
-				];
-
-				// Make a POST Request to Messaging API to reply to sender
-				$url = 'https://api.line.me/v2/bot/message/reply';
-				$data = [
-					'replyToken' => $replyToken,
-					'messages' => [$messages],
-				];
-				$post = json_encode($data);
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$result = curl_exec($ch);
-				curl_close($ch);
-
-				echo $result . "\r\n";
+				$text += "Water temperature is too low";
 			}
-			//// check water level ////
 			if($data_level > $level_set){
 				echo "check 4";
-				$text = "Water level is too low";
-				// Build message to reply back
-				$messages = [
-					'type' => 'text',
-					'text' =>  $temp_set , $level_set
-				];
-
-				// Make a POST Request to Messaging API to reply to sender
-				$url = 'https://api.line.me/v2/bot/message/reply';
-				$data = [
-					'replyToken' => $replyToken,
-					'messages' => [$messages],
-				];
-				$post = json_encode($data);
-				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-				$ch = curl_init($url);
-				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				$result = curl_exec($ch);
-				curl_close($ch);
-
-				echo $result . "\r\n";
+				$text += "Water level is too low";
 			}
-			//// check power ////
-			if($data_power == "off"){
+			if(data_power == "off"){
 				echo $data_power;
-				$text = "Power OFF!";
+				$text += "Power OFF!";
+			}
 				// Build message to reply back
 				$messages = [
 					'type' => 'text',
@@ -136,6 +86,66 @@ if (!is_null($events['events'])) {
 
 				echo $result . "\r\n";
 			}
+			// //// check water level ////
+			// if($data_level > $level_set){
+			// 	echo "check 4";
+			// 	$text = "Water level is too low";
+			// 	// Build message to reply back
+			// 	$messages = [
+			// 		'type' => 'text',
+			// 		'text' =>  $temp_set + $level_set
+			// 	];
+
+			// 	// Make a POST Request to Messaging API to reply to sender
+			// 	$url = 'https://api.line.me/v2/bot/message/reply';
+			// 	$data = [
+			// 		'replyToken' => $replyToken,
+			// 		'messages' => [$messages],
+			// 	];
+			// 	$post = json_encode($data);
+			// 	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+			// 	$ch = curl_init($url);
+			// 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			// 	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			// 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			// 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			// 	$result = curl_exec($ch);
+			// 	curl_close($ch);
+
+			// 	echo $result . "\r\n";
+			// }
+			// //// check power ////
+			// if($data_power == "off"){
+			// 	echo $data_power;
+			// 	$text = "Power OFF!";
+			// 	// Build message to reply back
+			// 	$messages = [
+			// 		'type' => 'text',
+			// 		'text' => $text
+			// 	];
+
+			// 	// Make a POST Request to Messaging API to reply to sender
+			// 	$url = 'https://api.line.me/v2/bot/message/reply';
+			// 	$data = [
+			// 		'replyToken' => $replyToken,
+			// 		'messages' => [$messages],
+			// 	];
+			// 	$post = json_encode($data);
+			// 	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+			// 	$ch = curl_init($url);
+			// 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			// 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			// 	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			// 	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			// 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			// 	$result = curl_exec($ch);
+			// 	curl_close($ch);
+
+			// 	echo $result . "\r\n";
+			// }
 
 
 // // 			// Build message to reply back
