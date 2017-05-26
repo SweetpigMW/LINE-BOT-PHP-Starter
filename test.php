@@ -59,6 +59,7 @@ if(!is_null($data_ard)){
 		echo $data_power;
 		$text = "Power OFF!";
 	}
+	if(!is_null($text)){
 	// Build message to reply back
 	$messages = [
 	'type' => 'text',
@@ -83,6 +84,7 @@ if(!is_null($data_ard)){
 	curl_close($ch);
 
 	echo $result . "\r\n";
+	}
 }
 			// //// check water level ////
 			// if($data_level > $level_set){
