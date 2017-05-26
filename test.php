@@ -25,9 +25,8 @@ $level_set ;
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
-//data_check();
 echo "check 2";
-//function data_check(){
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -46,7 +45,7 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-if($data != null){
+if($data !is_null()){
 			//// check temperature ////
 			if($data_temp <= $temp_set){
 				echo "check 3";
