@@ -20,7 +20,8 @@ $data_level = $data_get[1];
 $data_power = $data_get[2];
 $replyToken;
 $temp_set;
-$level_set ;
+$level_set;
+$text;
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
