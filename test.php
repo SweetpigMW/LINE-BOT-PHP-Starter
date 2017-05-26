@@ -49,15 +49,15 @@ if(!is_null($data)){
 			//// check temperature ////
 			if($data_temp <= $temp_set){
 				echo "check 3";
-				$text += "Water temperature is too low";
+				$text = "Water temperature is too low";
 			}
 			if($data_level > $level_set){
 				echo "check 4";
-				$text += "Water level is too low";
+				$text = "Water level is too low";
 			}
 			if(data_power == "off"){
 				echo $data_power;
-				$text += "Power OFF!";
+				$text = "Power OFF!";
 			}
 				// Build message to reply back
 				$messages = [
