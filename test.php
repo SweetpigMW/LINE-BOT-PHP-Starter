@@ -82,13 +82,13 @@ if($data_temp <= $temp_set){
 	echo $result . "\r\n";
 }
 //// check water level ////
-if($data_level > $level_set){
+if($level_set > $data_level){
 	echo "check 4";
 	$text = "Water level is too low";
 	// Build message to reply back
 	$messages = [
 		'type' => 'text',
-		'text' =>  $data_level
+		'text' =>  $text
 	];
 
 	// Make a POST Request to Messaging API to reply to sender
