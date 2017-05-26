@@ -63,11 +63,11 @@ if($data_temp <= $temp_set){
 				{
 					'type' => 'text',
 					'text' => $text
-				}
+				},
 				{
 					'type' => 'text',
 					'text' => $text2
-				}
+				},
 				{
 					'type' => 'text',
 					'text' => $text3
@@ -78,7 +78,7 @@ if($data_temp <= $temp_set){
 			{
 				'type' => 'text',
 				'text' => $text
-			}
+			},
 			{
 				'type' => 'text',
 				'text' => $text2
@@ -121,7 +121,7 @@ if($level_set > $data_level){
 			{
 				'type' => 'text',
 				'text' => $text
-			}
+			},
 			{
 				'type' => 'text',
 				'text' => $text2
