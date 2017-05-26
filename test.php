@@ -21,57 +21,6 @@ $events = json_decode($content, true);
 //data_check();
 echo "check 2";
 
-// $strUrl = "https://api.line.me/v2/bot/message/reply";
- 
-// $arrHeader = array();
-// $arrHeader[] = "Content-Type: application/json";
-// $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
- 
-// if (!is_null($events['events'])) {
-// 	// Loop through each event
-// 	foreach ($events['events'] as $event) {
-// 		// Reply only when message sent is in 'text' format
-// 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-// 			// Get text sent
-// 			$text = $event['message']['text'];
-// 			// Get replyToken
-// 			$replyToken = $event['replyToken'];
-// 			$text_get = explode(",", $text);
-// 			$temp_set = $text_get[0];
-// 			$level_set = $text_get[1];
-// 			echo $temp_set;
-// 			echo $level_set;
-// 		}
-// 	}
-// }
-// if($data_temp <= $temp_set){	
-// 	//$text = "Water temperature is too low";
-// 	$arrPostData = array();
-//   	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-//   	$arrPostData['messages'][0]['type'] = "text";
-//   	$arrPostData['messages'][0]['text'] = "Water temperature is too low";
-// }else if($level_set > $data_level){
-// 	$arrPostData = array();
-//   	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-//   	$arrPostData['messages'][0]['type'] = "text";
-//   	$arrPostData['messages'][0]['text'] = "Water level is too low";
-// }else if($data_power == "off"){
-// 	$arrPostData = array();
-//   	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-//   	$arrPostData['messages'][0]['type'] = "text";
-//   	$arrPostData['messages'][0]['text'] = "Power OFF!";
-// } 
-// $ch = curl_init();
-// curl_setopt($ch, CURLOPT_URL,$strUrl);
-// curl_setopt($ch, CURLOPT_HEADER, false);
-// curl_setopt($ch, CURLOPT_POST, true);
-// curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
-// curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-// $result = curl_exec($ch);
-// curl_close ($ch);
-
 //function data_check(){
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
@@ -120,7 +69,7 @@ if($data_power == "off"){
 
 	echo $result . "\r\n";
 }
-if($data_temp <= $temp_set && $level_set > $data_level){
+if(($data_temp <= $temp_set) && ($level_set > $data_level)){
 	$text = "Water level and temperature is too low";
 	// Build message to reply back
 	$messages = [
