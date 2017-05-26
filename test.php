@@ -119,16 +119,16 @@ if($level_set > $data_level){
 	$text = "Water level is too low";
 	if($data_power == "off"){
 		$text2 = "Power OFF!";
-		$messages = [
-			{
-				'type' => 'text',
-				'text' => $text
-			},
-			{
-				'type' => 'text',
-				'text' => $text2
-			}
-		];
+		// $messages = [
+		// 	{
+		// 		'type' => 'text',
+		// 		'text' => $text
+		// 	},
+		// 	{
+		// 		'type' => 'text',
+		// 		'text' => $text2
+		// 	}
+		// ];
 	}
 	else{
 		// Build message to reply back
