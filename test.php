@@ -45,7 +45,6 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-if(!is_null($data_ard)){
 	//// check temperature ////
 	if($data_temp <= $temp_set){
 		echo "check 3";
@@ -85,7 +84,7 @@ if(!is_null($data_ard)){
 
 	echo $result . "\r\n";
 	}
-}
+
 			// //// check water level ////
 			// if($data_level > $level_set){
 			// 	echo "check 4";
