@@ -91,49 +91,70 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
+//// check power ////
+if($data_power == "off"){
+	echo $data_power;
+	$text = "Power OFF!";
+	// Build message to reply back
+	$messages = [
+		'type' => 'text',
+		'text' => $text
+	];
+	// Make a POST Request to Messaging API to reply to sender
+	$url = 'https://api.line.me/v2/bot/message/reply';
+	$data = [
+		'replyToken' => $replyToken,
+		'messages' => [$messages],
+	];
+	$post = json_encode($data);
+	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	$result = curl_exec($ch);
+	curl_close($ch);
+
+	echo $result . "\r\n";
+}
+if($data_temp <= $temp_set && $level_set > $data_level){
+	$text = "Water level and temperature is too low";
+	// Build message to reply back
+	$messages = [
+		'type' => 'text',
+		'text' =>  $text
+	];
+	// Make a POST Request to Messaging API to reply to sender
+	$url = 'https://api.line.me/v2/bot/message/reply';
+	$data = [
+		'replyToken' => $replyToken,
+		'messages' => [$messages],
+	];
+	$post = json_encode($data);
+	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	$result = curl_exec($ch);
+	curl_close($ch);
+
+	echo $result . "\r\n";
+}
 //// check temperature ////
 if($data_temp <= $temp_set){
 	echo "check 3";
 	$text = "Water temperature is too low";
-	if($level_set > $data_level){
-		$text2 = "Water level is too low";
-		if($data_power == "off"){
-			$text3 = "Power OFF!";
-			$messages = [
-				{
-					'type' => 'text',
-					'text' => $text
-				},
-				{
-					'type' => 'text',
-					'text' => $text2
-				},
-				{
-					'type' => 'text',
-					'text' => $text3
-				}
-			];
-		}
-		else{
-			$messages = [
-				{
-					'type' => 'text',
-					'text' => $text
-				},
-				{
-					'type' => 'text',
-					'text' => $text2
-				}
-			];
-		}
-	}
-	else{
-		$messages = [
-			'type' => 'text',
-			'text' => $text
-		];
-	}
+	$messages = [
+		'type' => 'text',
+		'text' => $text
+	];
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/reply';
 	$data = [
@@ -158,54 +179,10 @@ if($data_temp <= $temp_set){
 if($level_set > $data_level){
 	echo "check 4";
 	$text = "Water level is too low";
-	if($data_power == "off"){
-		$text2 = "Power OFF!";
-		$messages = [
-			{
-				'type' => 'text',
-				'text' => $text
-			},
-			{
-				'type' => 'text',
-				'text' => $text2
-			}
-		];
-	}
-	else{
-		// Build message to reply back
-		$messages = [
-			'type' => 'text',
-			'text' =>  $text
-		];
-	}
-	// Make a POST Request to Messaging API to reply to sender
-	$url = 'https://api.line.me/v2/bot/message/reply';
-	$data = [
-		'replyToken' => $replyToken,
-		'messages' => [$messages],
-	];
-	$post = json_encode($data);
-	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-	$ch = curl_init($url);
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	$result = curl_exec($ch);
-	curl_close($ch);
-
-	echo $result . "\r\n";
-}
-//// check power ////
-if($data_power == "off"){
-	echo $data_power;
-	$text = "Power OFF!";
 	// Build message to reply back
 	$messages = [
 		'type' => 'text',
-		'text' => $text
+		'text' =>  $text
 	];
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/reply';
