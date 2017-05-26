@@ -18,6 +18,7 @@ $data_get = explode(",", $data);
 $data_temp = $data_get[0];
 $data_level = $data_get[1];
 $data_power = $data_get[2];
+echo $data_temp
 $replyToken;
 $temp_set;
 $level_set;
@@ -27,7 +28,6 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 echo "check 2";
-
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -46,7 +46,7 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-	//// check temperature ////
+//// check temperature ////
 if($data_temp <= $temp_set){
 	echo "check 3";
 	$text = "Water temperature is too low";
