@@ -55,12 +55,42 @@ if (!is_null($events['events'])) {
 if($data_temp <= $temp_set){
 	echo "check 3";
 	$text = "Water temperature is too low";
-	// Build message to reply back
+	if($level_set > $data_level){
+		$text2 = "Water level is too low";
+		if($data_power == "off"){
+			$text3 = "Power OFF!";
+			$messages = [
+				{
+					'type' => 'text',
+					'text' => $text
+				}
+				{
+					'type' => 'text',
+					'text' => $text2
+				}
+				{
+					'type' => 'text',
+					'text' => $text3
+				}
+			];
+		}
+		$messages = [
+			{
+				'type' => 'text',
+				'text' => $text
+			}
+			{
+				'type' => 'text',
+				'text' => $text2
+			}
+		];
+	}
 	$messages = [
-		'type' => 'text',
-		'text' => $text
+		{
+			'type' => 'text',
+			'text' => $text
+		}
 	];
-
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/reply';
 	$data = [
@@ -85,12 +115,24 @@ if($data_temp <= $temp_set){
 if($level_set > $data_level){
 	echo "check 4";
 	$text = "Water level is too low";
+	if($data_power == "off"){
+		$text2 = "Power OFF!";
+		$messages = [
+			{
+				'type' => 'text',
+				'text' => $text
+			}
+			{
+				'type' => 'text',
+				'text' => $text2
+			}
+		];
+	}
 	// Build message to reply back
 	$messages = [
 		'type' => 'text',
 		'text' =>  $text
 	];
-
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/reply';
 	$data = [
@@ -120,7 +162,6 @@ if($data_power == "off"){
 		'type' => 'text',
 		'text' => $text
 	];
-
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/reply';
 	$data = [
@@ -144,36 +185,5 @@ if($data_power == "off"){
 else{
 	echo "OK all";
 }
-
-
-// // 			// Build message to reply back
-// // 			$messages = [
-// // 				'type' => 'text',
-// // 				'text' => $text
-// // 			];
-
-// // 			// Make a POST Request to Messaging API to reply to sender
-// // 			$url = 'https://api.line.me/v2/bot/message/reply';
-// // 			$data = [
-// // 				'replyToken' => $replyToken,
-// // 				'messages' => [$messages],
-// // 			];
-// // 			$post = json_encode($data);
-// // 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
-// // 			$ch = curl_init($url);
-// // 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-// // 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// // 			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-// // 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-// // 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-// // 			$result = curl_exec($ch);
-// // 			curl_close($ch);
-
-// // 			echo $result . "\r\n";
- // 		}
- // 	}
- // }
-//echo "OK";
 
 ?>
