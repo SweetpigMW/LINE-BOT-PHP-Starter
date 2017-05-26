@@ -45,7 +45,7 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-if($data !is_null()){
+if(!is_null($data)){
 			//// check temperature ////
 			if($data_temp <= $temp_set){
 				echo "check 3";
