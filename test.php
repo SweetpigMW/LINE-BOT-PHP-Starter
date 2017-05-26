@@ -89,10 +89,8 @@ if($data_temp <= $temp_set){
 	}
 	else{
 		$messages = [
-			{
-				'type' => 'text',
-				'text' => $text
-			}
+			'type' => 'text',
+			'text' => $text
 		];
 	}
 	// Make a POST Request to Messaging API to reply to sender
