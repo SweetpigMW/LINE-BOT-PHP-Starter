@@ -1,6 +1,10 @@
 <?php
 $access_token = '8lqeJ0Y8ueX9E8IyvAfiRmS7ivqa2sanRuAlakOMG1jXNQVJ6Zem9RsOPe04FoK+T3D45lIAH9v9tJ1fpXh6BqNQL0KLfqJzdASLjDteryhnRhccMGSbOqMIEPaBdAND53w3CfjVr2DLRF9k1sqdDQdB04t89/1O/w1cDnyilFU=';
 
+$data_ard = file_get_contents('http://aquarium-notice.herokuapp.com/showdata.php');
+$data_json = json_decode($data_json,true);
+echo $data_json;
+
 $data = "29.5,5,on";
 $data_get = explode(",", $data);
 $data_temp = $data_get[0];
