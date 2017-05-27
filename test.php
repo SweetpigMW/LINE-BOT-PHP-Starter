@@ -3,17 +3,17 @@ $access_token = '8lqeJ0Y8ueX9E8IyvAfiRmS7ivqa2sanRuAlakOMG1jXNQVJ6Zem9RsOPe04FoK
 
 $data_ard = file_get_contents('http://aquarium-notice.herokuapp.com/showdata.php');
 $data_json = json_decode($data_ard,true);
-echo $data_json[0][0];
+//echo $data_json[0][0];
 
 
-$data = "29.5,5,0";
-$data_get = explode(",", $data);
-// $data_temp = $data_json[0][1];
-// $data_level = $data_json[0][2];
-// $data_power = $data_json[0][0];
-$data_temp = $data_get[0];
-$data_level = $data_get[1];
-$data_power = $data_get[2];
+// $data = "29.5,5,0";
+// $data_get = explode(",", $data);
+$data_temp = $data_json[0][1];
+$data_level = $data_json[0][2];
+$data_power = $data_json[0][0];
+// $data_temp = $data_get[0];
+// $data_level = $data_get[1];
+// $data_power = $data_get[2];
 $replyToken;
 $temp_set;
 $level_set;
