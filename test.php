@@ -13,7 +13,7 @@ $data_level = $data_json[0][2];
 $data_power = $data_json[0][0];
 $replyToken;
 $temp_set;
-$level_set = 2;
+$level_set;
 echo $data_temp;
 echo "<br>";
 echo $data_level;
