@@ -41,8 +41,36 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			$text_get = explode(",", $text);
-			$temp_set = $text_get[0];
-			$level_set = $text_get[1];
+			if(is_numeric($text_get[0]) && is_numeric($text_get[1])){
+				$temp_set = $text_get[0];
+				$level_set = $text_get[1];
+			}
+			else{
+				$text = "กรุณา ใส่อุณหภูมิและระดับน้ำ ตามรูปแบบ ค่าอุณหภูมิ,ค่าระดับน้ำ";
+				$messages = [
+					'type' => 'text',
+					'text' => $text
+				];
+				// Make a POST Request to Messaging API to reply to sender
+				$url = 'https://api.line.me/v2/bot/message/reply';
+				$data = [
+					'replyToken' => $replyToken,
+					'messages' => [$messages],
+				];
+				$post = json_encode($data);
+				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+
+				$ch = curl_init($url);
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+				$result = curl_exec($ch);
+				curl_close($ch);
+
+				echo $result . "\r\n";
+			}
 			//echo $temp_set;
 			//echo $level_set;
 		}
