@@ -6,7 +6,7 @@ $data_json = json_decode($data_ard,true);
 echo $data_json[0][0];
 
 
-$data = "29.5,5,off";
+$data = "29.5,5,0";
 $data_get = explode(",", $data);
 // $data_temp = $data_json[0][1];
 // $data_level = $data_json[0][2];
@@ -50,7 +50,7 @@ if (!is_null($events['events'])) {
 }
 //// check power ////
 if($data_power == 0){
-	echo $data_power;
+	//echo $data_power;
 	$text = "Power OFF!";
 	// Build message to reply back
 	$messages = [
