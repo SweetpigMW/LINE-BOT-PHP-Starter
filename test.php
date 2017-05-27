@@ -74,7 +74,7 @@ if($data_power == 0){
 
 	echo $result . "\r\n";
 }
-if(($data_temp <= $temp_set) && ($data_level > $level_set)){
+if(($data_temp <= $temp_set) && ($level_set > $data_level)){
 	$text = "Water level and temperature is too low";
 	// Build message to reply back
 	$messages = [
@@ -130,7 +130,7 @@ if($data_temp <= $temp_set){
 	echo $result . "\r\n";
 }
 //// check water level ////
-if($data_level > $level_set){
+if($level_set > $data_level){
 	echo "check 4";
 	$text = "Water level is too low";
 	// Build message to reply back
