@@ -3,7 +3,9 @@ $access_token = '8lqeJ0Y8ueX9E8IyvAfiRmS7ivqa2sanRuAlakOMG1jXNQVJ6Zem9RsOPe04FoK
 
 $data_ard = file_get_contents('http://aquarium-notice.herokuapp.com/showdata.php');
 $data_json = json_decode($data_ard,true);
-echo $data_json;
+echo $data_json[0];
+echo $data_json[1];
+echo $data_json[2];;
 
 $data = "29.5,5,on";
 $data_get = explode(",", $data);
