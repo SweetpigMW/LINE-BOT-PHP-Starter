@@ -6,11 +6,14 @@ $data_json = json_decode($data_ard,true);
 echo $data_json[0][0];
 
 
-//$data = "29.5,5,on";
-//$data_get = explode(",", $data);
-$data_temp = $data_json[0][1];
-$data_level = $data_json[0][2];
-$data_power = $data_json[0][0];
+$data = "29.5,5,off";
+$data_get = explode(",", $data);
+// $data_temp = $data_json[0][1];
+// $data_level = $data_json[0][2];
+// $data_power = $data_json[0][0];
+$data_temp = $data_get[0];
+$data_level = $data_get[1];
+$data_power = $data_get[2];
 $replyToken;
 $temp_set;
 $level_set;
