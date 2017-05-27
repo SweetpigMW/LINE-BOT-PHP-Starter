@@ -13,7 +13,7 @@ $data_level = $data_json[0][2];
 $data_power = $data_json[0][0];
 $replyToken;
 $temp_set;
-$level_set;
+$level_set = 2;
 echo $data_temp;
 echo "<br>";
 echo $data_level;
@@ -74,7 +74,7 @@ if($data_power == 0){
 
 	echo $result . "\r\n";
 }
-if(($data_temp <= $temp_set) && ($level_set > $data_level)){
+if(($data_temp <= $temp_set) && ($data_level > $level_set)){
 	$text = "Water level and temperature is too low";
 	// Build message to reply back
 	$messages = [
@@ -130,7 +130,7 @@ if($data_temp <= $temp_set){
 	echo $result . "\r\n";
 }
 //// check water level ////
-if($level_set > $data_level){
+if($data_level > $level_set){
 	echo "check 4";
 	$text = "Water level is too low";
 	// Build message to reply back
