@@ -76,7 +76,6 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-while (1) { 
 	$data_ard = file_get_contents('http://aquarium-notice.herokuapp.com/showdata.php');
 	$data_json = json_decode($data_ard,true);
 	// $data_get = explode(",", $data);
@@ -202,5 +201,4 @@ while (1) {
 			echo "OK all";
 		}
 	}
-}
 ?>
