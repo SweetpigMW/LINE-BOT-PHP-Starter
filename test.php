@@ -1,16 +1,16 @@
 <?php
 $access_token = '8lqeJ0Y8ueX9E8IyvAfiRmS7ivqa2sanRuAlakOMG1jXNQVJ6Zem9RsOPe04FoK+T3D45lIAH9v9tJ1fpXh6BqNQL0KLfqJzdASLjDteryhnRhccMGSbOqMIEPaBdAND53w3CfjVr2DLRF9k1sqdDQdB04t89/1O/w1cDnyilFU=';
 
-$data_ard = file_get_contents('http://aquarium-notice.herokuapp.com/showdata.php');
-$data_json = json_decode($data_ard,true);
+//$data_ard = file_get_contents('http://aquarium-notice.herokuapp.com/showdata.php');
+//$data_json = json_decode($data_ard,true);
 //echo $data_json[0][0];
 
 
 // $data = "29.5,5,0";
 // $data_get = explode(",", $data);
-$data_temp = $data_json[0][1];
-$data_level = $data_json[0][2];
-$data_power = $data_json[0][0];
+$data_temp;
+$data_level;
+$data_power;
 // $data_temp = $data_get[0];
 // $data_level = $data_get[1];
 // $data_power = $data_get[2];
@@ -76,122 +76,131 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-if (!is_null($data_json[0][1])) {
-	//// check power ////
-	if($data_power == 0){
-		//echo $data_power;
-		$text = "Power OFF!";
-		// Build message to reply back
-		$messages = [
-			'type' => 'text',
-			'text' => $text
-		];
-		// Make a POST Request to Messaging API to reply to sender
-		$url = 'https://api.line.me/v2/bot/message/reply';
-		$data = [
-			'replyToken' => $replyToken,
-			'messages' => [$messages],
-		];
-		$post = json_encode($data);
-		$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+while (1) { 
+	$data_ard = file_get_contents('http://aquarium-notice.herokuapp.com/showdata.php');
+	$data_json = json_decode($data_ard,true);
+	// $data_get = explode(",", $data);
+	$data_temp = $data_json[0][1];
+	$data_level = $data_json[0][2];
+	$data_power = $data_json[0][0];
 
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		$result = curl_exec($ch);
-		curl_close($ch);
+	if (!is_null($data_json[0][1])) {
+		//// check power ////
+		if($data_power == 0){
+			//echo $data_power;
+			$text = "Power OFF!";
+			// Build message to reply back
+			$messages = [
+				'type' => 'text',
+				'text' => $text
+			];
+			// Make a POST Request to Messaging API to reply to sender
+			$url = 'https://api.line.me/v2/bot/message/reply';
+			$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+			$post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-		echo $result . "\r\n";
-	}
-	if(($data_temp <= $temp_set) && ($data_level > $level_set)){
-		$text = "Water level and temperature is too low";
-		// Build message to reply back
-		$messages = [
-			'type' => 'text',
-			'text' =>  $text
-		];
-		// Make a POST Request to Messaging API to reply to sender
-		$url = 'https://api.line.me/v2/bot/message/reply';
-		$data = [
-			'replyToken' => $replyToken,
-			'messages' => [$messages],
-		];
-		$post = json_encode($data);
-		$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
 
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		$result = curl_exec($ch);
-		curl_close($ch);
+			echo $result . "\r\n";
+		}
+		if(($data_temp <= $temp_set) && ($data_level > $level_set)){
+			$text = "Water level and temperature is too low";
+			// Build message to reply back
+			$messages = [
+				'type' => 'text',
+				'text' =>  $text
+			];
+			// Make a POST Request to Messaging API to reply to sender
+			$url = 'https://api.line.me/v2/bot/message/reply';
+			$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+			$post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-		echo $result . "\r\n";
-	}
-	//// check temperature ////
-	if($data_temp <= $temp_set){
-		echo "check 3";
-		$text = "Water temperature is too low";
-		$messages = [
-			'type' => 'text',
-			'text' => $text
-		];
-		// Make a POST Request to Messaging API to reply to sender
-		$url = 'https://api.line.me/v2/bot/message/reply';
-		$data = [
-			'replyToken' => $replyToken,
-			'messages' => [$messages],
-		];
-		$post = json_encode($data);
-		$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
 
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		$result = curl_exec($ch);
-		curl_close($ch);
+			echo $result . "\r\n";
+		}
+		//// check temperature ////
+		if($data_temp <= $temp_set){
+			echo "check 3";
+			$text = "Water temperature is too low";
+			$messages = [
+				'type' => 'text',
+				'text' => $text
+			];
+			// Make a POST Request to Messaging API to reply to sender
+			$url = 'https://api.line.me/v2/bot/message/reply';
+			$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+			$post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-		echo $result . "\r\n";
-	}
-	//// check water level ////
-	if($data_level > $level_set){
-		echo "check 4";
-		$text = "Water level is too low";
-		// Build message to reply back
-		$messages = [
-			'type' => 'text',
-			'text' =>  $text
-		];
-		// Make a POST Request to Messaging API to reply to sender
-		$url = 'https://api.line.me/v2/bot/message/reply';
-		$data = [
-			'replyToken' => $replyToken,
-			'messages' => [$messages],
-		];
-		$post = json_encode($data);
-		$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
 
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		$result = curl_exec($ch);
-		curl_close($ch);
+			echo $result . "\r\n";
+		}
+		//// check water level ////
+		if($data_level > $level_set){
+			echo "check 4";
+			$text = "Water level is too low";
+			// Build message to reply back
+			$messages = [
+				'type' => 'text',
+				'text' =>  $text
+			];
+			// Make a POST Request to Messaging API to reply to sender
+			$url = 'https://api.line.me/v2/bot/message/reply';
+			$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+			$post = json_encode($data);
+			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
-		echo $result . "\r\n";
-	}
-	else{
-		echo "OK all";
+			$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
+
+			echo $result . "\r\n";
+		}
+		else{
+			echo "OK all";
+		}
 	}
 }
 ?>
